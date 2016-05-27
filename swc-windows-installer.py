@@ -274,7 +274,7 @@ def make_posix_path(windows_path):
     """Convert a Windows path to a posix path"""
     for regex, sub in [
             (re.compile(r'\\'), '/'),
-            (re.compile('^[Cc]:'), '/c'),
+            (re.compile('^([A-Za-z]):'), r'/\1'),
             ]:
         windows_path = regex.sub(sub, windows_path)
     return windows_path
